@@ -60,3 +60,7 @@ buck-out/
 
 # google-services
 /android/app/google-services.json
+ios/quizApplication/GoogleService-Info.plist
+
+# api information
+ios/quizApplication.xcodeproj/project.pbxproj
