@@ -64,3 +64,5 @@ ios/quizApplication/GoogleService-Info.plist
 
 # api information
 ios/quizApplication.xcodeproj/project.pbxproj
+
+.env

@@ -4,7 +4,7 @@ import auth from '@react-native-firebase/auth';
 import {AuthContext} from './AuthProvider';
 
 import AuthStack from './AuthStack';
-import AppStack from './AppStack';
+import {AppStack} from './AppStack';
 
 export const Routes = () => {
   const {user, setUser} = useContext(AuthContext);

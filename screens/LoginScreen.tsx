@@ -3,12 +3,13 @@ import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {AuthContext} from '../navigation/AuthProvider';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
+import SocialButton from '../components/SocialButton';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const {login} = useContext(AuthContext);
+  const {login, googleLogin} = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
@@ -41,6 +42,22 @@ const LoginScreen = ({navigation}) => {
       <TouchableOpacity style={styles.forgotButton} onPress={() => {}}>
         <Text style={styles.navButtonText}>Forgot Password?</Text>
       </TouchableOpacity>
+
+      <SocialButton
+        buttonTitle="Sign In with Facebook"
+        btnType="facebook"
+        color="#4867aa"
+        backgroundColor="#e6eaf4"
+        onPress={() => {}}
+      />
+
+      <SocialButton
+        buttonTitle="Sign In with Google"
+        btnType="google"
+        color="#de4d41"
+        backgroundColor="#f5e7ea"
+        onPress={() => googleLogin()}
+      />
 
       <TouchableOpacity
         style={styles.forgotButton}
