@@ -9,7 +9,7 @@ const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const {login, googleLogin} = useContext(AuthContext);
+  const {login, googleLogin, facebookLogin} = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
@@ -48,7 +48,7 @@ const LoginScreen = ({navigation}) => {
         btnType="facebook"
         color="#4867aa"
         backgroundColor="#e6eaf4"
-        onPress={() => {}}
+        onPress={() => facebookLogin()}
       />
 
       <SocialButton
@@ -63,7 +63,7 @@ const LoginScreen = ({navigation}) => {
         style={styles.forgotButton}
         onPress={() => navigation.navigate('Signup')}>
         <Text style={styles.navButtonText}>
-          Don't have an acount? Create here
+          Don't have an account? Create here
         </Text>
       </TouchableOpacity>
     </View>

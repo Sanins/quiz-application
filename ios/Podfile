@@ -11,6 +11,10 @@ target 'quizApplication' do
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   pod 'react-native-config', :path => '../node_modules/react-native-config'
+  
+  pod 'Firebase/Auth'
+
+  pod 'GoogleSignIn'
 
   target 'quizApplicationTests' do
     inherit! :complete
