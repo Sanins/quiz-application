@@ -7,6 +7,7 @@ export const AuthContext = createContext(undefined);
 
 export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
+  const [error, setError] = useState(false);
 
   return (
     <AuthContext.Provider
@@ -32,6 +33,11 @@ export const AuthProvider = ({children}) => {
             await auth().signOut();
           } catch (e) {
             console.log(e);
+          }
+        },
+        error: () => {
+          if (error) {
+            return 'error';
           }
         },
         googleLogin: async () => {
@@ -68,7 +74,11 @@ export const AuthProvider = ({children}) => {
           );
 
           // Sign-in the user with the credential
-          return auth().signInWithCredential(facebookCredential);
+          return auth()
+            .signInWithCredential(facebookCredential)
+            .catch(() => {
+              setError(true);
+            });
         },
       }}>
       {children}

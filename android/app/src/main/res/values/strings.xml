@@ -1,5 +1,5 @@
 
 <resources>
     <string name="app_name">quizApplication</string>
-    <string name="facebook_app_id">$(FACEBOOK_APP_ID)</string>
+    <string name="facebook_app_id">@string/FACEBOOK_APP_ID</string>
 </resources>

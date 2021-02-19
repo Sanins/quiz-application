@@ -4,16 +4,17 @@ import {AuthContext} from '../navigation/AuthProvider';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 import SocialButton from '../components/SocialButton';
+import {ErrorModal} from '../utils/ErrorModal';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const {login, googleLogin, facebookLogin} = useContext(AuthContext);
+  const {login, googleLogin, facebookLogin, error} = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
-      {/* <Image source={require('../assets/logo.png')} style={styles.logo} /> */}
+      {error() && <ErrorModal />}
       <Text style={styles.text}>RN Social App</Text>
 
       <FormInput
@@ -66,6 +67,7 @@ const LoginScreen = ({navigation}) => {
           Don't have an account? Create here
         </Text>
       </TouchableOpacity>
+
     </View>
   );
 };
