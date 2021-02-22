@@ -67,7 +67,6 @@ const LoginScreen = ({navigation}) => {
           Don't have an account? Create here
         </Text>
       </TouchableOpacity>
-
     </View>
   );
 };
