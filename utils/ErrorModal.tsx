@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
+import {Modal, StyleSheet, Text, Pressable, View} from 'react-native';
 
-export const ErrorModal = () => {
+export interface ErrorModalProps {
+  error: string;
+}
+
+export const ErrorModal = (props: ErrorModalProps) => {
   const [modalVisible, setModalVisible] = useState(true);
+
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -10,12 +15,11 @@ export const ErrorModal = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
           setModalVisible(!modalVisible);
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
+            <Text style={styles.modalText}>{props.error}</Text>
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}>

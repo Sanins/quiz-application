@@ -14,7 +14,7 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      {error() && <ErrorModal />}
+      {error() && <ErrorModal error={error()} />}
       <Text style={styles.text}>RN Social App</Text>
 
       <FormInput
