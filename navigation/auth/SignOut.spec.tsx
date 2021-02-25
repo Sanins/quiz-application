@@ -12,7 +12,7 @@ jest.mock('@react-native-firebase/auth', () => {
   });
 });
 
-describe('navigation > auth > Register', () => {
+describe('navigation > auth > SignOut', () => {
   beforeEach(() => {
     mocks.signOut.mockReset();
   });
