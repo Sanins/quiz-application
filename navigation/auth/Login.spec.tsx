@@ -1,13 +1,11 @@
 import {Login} from './Login';
 
 const mocks = {
-  auth: jest.fn(),
   signInWithEmailAndPassword: jest.fn(),
 };
 
 jest.mock('@react-native-firebase/auth', () => {
   return () => ({
-    auth: mocks.auth,
     signInWithEmailAndPassword: mocks.signInWithEmailAndPassword,
   });
 });
