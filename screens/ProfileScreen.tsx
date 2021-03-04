@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 import FormButton from '../components/FormButton';
+import {FacebookLogin} from '../navigation/auth/FacebookLogin';
 import {AuthContext} from '../navigation/AuthProvider';
 
 const HomeScreen = ({navigation}) => {
@@ -10,6 +11,10 @@ const HomeScreen = ({navigation}) => {
     <View style={styles.container}>
       {user.displayName && <Text style={styles.text}>{user.displayName}</Text>}
       <Text style={styles.text}>This is the Profile Screen</Text>
+      <Button
+        title="Connect facebook account"
+        onPress={() => FacebookLogin()}
+      />
       <Button title="Go back" onPress={() => navigation.goBack()} />
       <FormButton buttonTitle="Logout" onPress={() => logout()} />
     </View>

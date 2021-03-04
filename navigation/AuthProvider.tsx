@@ -42,7 +42,11 @@ export const AuthProvider = ({children}) => {
           await GoogleLogin();
         },
         facebookLogin: async () => {
-          await FacebookLogin();
+          const tryFacebook = await FacebookLogin();
+
+          if (tryFacebook) {
+            setError(tryFacebook);
+          }
         },
       }}>
       {children}
