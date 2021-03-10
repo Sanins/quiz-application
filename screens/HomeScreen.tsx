@@ -1,7 +1,27 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+import {AuthContext} from '../navigation/AuthProvider';
+
+const ConnectUserInformation = () => {
+  const ref = firestore().collection('users');
+  const {user} = useContext(AuthContext);
+
+  const providerId = JSON.stringify(user.providerData[0].providerId);
+
+  if (providerId === '"google.com"') {
+    ref.doc(user.uid).set({id: user.uid, google: true}, {merge: true});
+  } else if (providerId === '"facebook.com"') {
+    ref.doc(user.uid).set({id: user.uid, facebook: true}, {merge: true});
+  } else if (providerId === '"password"') {
+    ref.doc(user.uid).set({id: user.uid, appLogin: true}, {merge: true});
+  } else {
+    return;
+  }
+};
 
 const HomeScreen = ({navigation}) => {
+  ConnectUserInformation();
   return (
     <View style={styles.container}>
       <Text style={styles.text}>This is the dashboard</Text>

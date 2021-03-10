@@ -1,12 +1,11 @@
-import auth from '@react-native-firebase/auth';
 import React from 'react';
+import auth from '@react-native-firebase/auth';
 import {
   LoginManager,
   AccessToken,
   GraphRequestManager,
   GraphRequest,
 } from 'react-native-fbsdk';
-import {ErrorModal} from '../../utils/ErrorModal';
 
 const getFacebookProfile = async function (): Promise<any> {
   return new Promise((resolve) => {
@@ -55,16 +54,12 @@ export const FacebookLogin = async function (): Promise<any> {
   const accountExists = await auth().fetchSignInMethodsForEmail(profile.email);
 
   if (auth().currentUser !== null) {
-    console.log(accountExists);
-    auth().currentUser.linkWithCredential(facebookCredential);
-
-    return (
-      <>
-        <ErrorModal error={'Facebook account is now linked'} />;
-      </>
-    );
+    await auth()
+      .currentUser.linkWithCredential(facebookCredential)
+      .catch((e) => {
+        console.log(e);
+      });
   }
-
   // Sign-in the user with the credential
   return auth()
     .signInWithCredential(facebookCredential)

@@ -8,6 +8,20 @@ export const GoogleLogin = async function (): Promise<void | string> {
   // Create a Google credential with the token
   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
+  // const getCurrentUser = async () => {
+  //   return await GoogleSignin.getCurrentUser();
+  // };
+
+  // console.log(await getCurrentUser);
+
+  if (auth().currentUser !== null) {
+    await auth()
+      .currentUser.linkWithCredential(googleCredential)
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
   try {
     auth().signInWithCredential(googleCredential);
   } catch (e) {
