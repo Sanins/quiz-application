@@ -5,20 +5,46 @@ import SignupScreen from '../screens/SignupScreen';
 import LoginScreen from '../screens/LoginScreen';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
+import SplashScreen from '../screens/SplashScreen';
 
 const Stack = createStackNavigator();
 
 const AuthStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="Splash">
       <Stack.Screen
-        name="Login"
-        component={LoginScreen}
+        name="Splash"
+        component={SplashScreen}
         options={{header: () => null}}
       />
       <Stack.Screen
-        name="Signup"
-        component={SignupScreen}
+        name="Login"
+        component={LoginScreen}
+        options={({navigation}) => ({
+          title: '',
+          headerStyle: {
+            backgroundColor: '#000',
+            shadowColor: '#000',
+            elevation: 0,
+          },
+          headerLeft: () => (
+            // eslint-disable-next-line react-native/no-inline-styles
+            <View style={{marginLeft: 10}}>
+              <FontAwesome.Button
+                name="long-arrow-left"
+                size={25}
+                backgroundColor="#000"
+                color="#FFF"
+                onPress={() => navigation.navigate('Splash')}
+              />
+            </View>
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="ForgottenPassword"
+        component={ForgotPasswordScreen}
         options={({navigation}) => ({
           title: '',
           headerStyle: {
@@ -35,6 +61,30 @@ const AuthStack = () => {
                 backgroundColor="#f9fafd"
                 color="#333"
                 onPress={() => navigation.navigate('Login')}
+              />
+            </View>
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="Signup"
+        component={SignupScreen}
+        options={({navigation}) => ({
+          title: '',
+          headerStyle: {
+            backgroundColor: '#000',
+            shadowColor: '#000',
+            elevation: 0,
+          },
+          headerLeft: () => (
+            // eslint-disable-next-line react-native/no-inline-styles
+            <View style={{marginLeft: 10}}>
+              <FontAwesome.Button
+                name="long-arrow-left"
+                size={25}
+                backgroundColor="#000"
+                color="#FFF"
+                onPress={() => navigation.navigate('Splash')}
               />
             </View>
           ),

@@ -6,7 +6,7 @@ import firestore from '@react-native-firebase/firestore';
 import {GoogleLogin} from '../navigation/auth/GoogleLogin';
 import auth from '@react-native-firebase/auth';
 
-const HomeScreen = ({navigation}) => {
+const ProfileScreen = ({navigation}) => {
   interface firestoreSocialDataTypes {
     id: string;
     facebook?: boolean;
@@ -131,12 +131,16 @@ const HomeScreen = ({navigation}) => {
       )}
       <Button title="Delete Account" onPress={() => removeAccount()} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
-      <FormButton buttonTitle="Logout" onPress={() => logout()} />
+      <FormButton
+        bgColor="light"
+        buttonTitle="Logout"
+        onPress={() => logout()}
+      />
     </View>
   );
 };
 
-export default HomeScreen;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
   container: {

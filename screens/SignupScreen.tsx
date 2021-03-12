@@ -14,7 +14,7 @@ const SignupScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Create an account</Text>
+      <Text style={styles.text}>Create Account</Text>
 
       <FormInput
         labelValue={email}
@@ -43,6 +43,7 @@ const SignupScreen = ({navigation}) => {
       />
 
       <FormButton
+        bgColor="light"
         buttonTitle="Sign Up"
         onPress={() => register(email, password)}
       />
@@ -65,16 +66,16 @@ const SignupScreen = ({navigation}) => {
       <SocialButton
         buttonTitle="Sign Up with Facebook"
         btnType="facebook"
-        color="#4867aa"
-        backgroundColor="#e6eaf4"
+        color="#FFF"
+        backgroundColor="#496AD5"
         onPress={() => {}}
       />
 
       <SocialButton
         buttonTitle="Sign Up with Google"
         btnType="google"
-        color="#de4d41"
-        backgroundColor="#f5e7ea"
+        color="#FFF"
+        backgroundColor="#de4d41"
         onPress={() => {}}
       />
 
@@ -91,16 +92,15 @@ export default SignupScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f9fafd',
+    backgroundColor: '#000',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
   },
   text: {
-    fontSize: 28,
+    fontSize: 46,
     marginBottom: 10,
-    color: '#051d5f',
+    color: '#FFF',
   },
   navButton: {
     marginTop: 15,
@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
   navButtonText: {
     fontSize: 18,
     fontWeight: '500',
-    color: '#2e64e5',
+    textAlign: 'center',
+    color: '#9E9E9E',
   },
   textPrivate: {
     flexDirection: 'row',

@@ -8,12 +8,6 @@ export const GoogleLogin = async function (): Promise<void | string> {
   // Create a Google credential with the token
   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
-  // const getCurrentUser = async () => {
-  //   return await GoogleSignin.getCurrentUser();
-  // };
-
-  // console.log(await getCurrentUser);
-
   if (auth().currentUser !== null) {
     await auth()
       .currentUser.linkWithCredential(googleCredential)
@@ -25,6 +19,7 @@ export const GoogleLogin = async function (): Promise<void | string> {
   try {
     auth().signInWithCredential(googleCredential);
   } catch (e) {
+    console.log(e.email);
     if (e.code === 'auth/account-exists-with-different-credential') {
       return 'Account already exists under a different login provider';
     } else if (e.code === 'auth/invalid-credential') {

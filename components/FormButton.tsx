@@ -2,10 +2,22 @@ import React from 'react';
 import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {windowHeight} from '../utils/Dimensions';
 
-const FormButton = ({buttonTitle, ...rest}) => {
+const FormButton = ({buttonTitle, bgColor, ...rest}) => {
+  let background;
+  let colour;
+
+  if (bgColor === 'light') {
+    background = '#FFBB0E';
+    colour = '#000';
+  } else if (bgColor === 'dark') {
+    background = '#000';
+    colour = '#FFF';
+  }
   return (
-    <TouchableOpacity style={styles.buttonContainer} {...rest}>
-      <Text style={styles.buttonText}>{buttonTitle}</Text>
+    <TouchableOpacity
+      style={[styles.buttonContainer, {backgroundColor: background}]}
+      {...rest}>
+      <Text style={[styles.buttonText, {color: colour}]}>{buttonTitle}</Text>
     </TouchableOpacity>
   );
 };
@@ -16,12 +28,10 @@ const styles = StyleSheet.create({
   buttonContainer: {
     marginTop: 10,
     width: '100%',
-    height: windowHeight / 15,
-    backgroundColor: '#2e64e5',
-    padding: 10,
+    height: windowHeight / 17,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 3,
+    borderRadius: 10,
   },
   buttonText: {
     fontSize: 18,
